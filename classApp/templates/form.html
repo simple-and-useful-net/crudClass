@@ -1,0 +1,7 @@
+<form method="POST">
+    {% csrf_token %}
+    <ul>
+        {{ form.as_ul }}
+    </ul>
+    <input type="submit" class='btn btn-primary' value="登録">
+</form>

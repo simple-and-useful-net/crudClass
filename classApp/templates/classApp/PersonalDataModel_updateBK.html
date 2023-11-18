@@ -1,0 +1,17 @@
+{% extends 'ba.html' %}
+{% load django_bootstrap5 %}
+
+
+{% block main %}
+<form method="POST" class="form">
+    {% csrf_token %}
+
+    {% bootstrap_form form %}    
+    <!--
+        {{ form.as_table }}
+    -->
+            
+    <!-- <input type="submit" class='btn btn-primary' value="登録"> -->
+    {% bootstrap_button button_type="submit" content="Register" size="lg" %}
+</form>
+{% endblock %}

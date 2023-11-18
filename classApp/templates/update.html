@@ -1,0 +1,52 @@
+{% load django_bootstrap5 %}
+{% load widget_tweaks %}
+
+<head>
+    <meta charset =" UTF-8" />
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+
+    <title></title > 
+</head >
+
+<body>
+
+    <div class="container">
+        <h1>更新処理</h1>
+        {{test_message}}
+        <form method="POST">
+            {% csrf_token %}
+            
+            {% for item in form %}
+            
+                    {% if item.auto_id == "id_title" %}
+                        <b><label for="{{item.auto_id}}">{{item.label}}</label></b>
+                    {% else %}
+                        <label for="{{item.auto_id}}">{{item.label}}</label>
+                    {% endif %}
+                    <!-- {{item}} -->
+                    {% render_field item class+="form-control w-25 mb-4" %}
+
+                {% comment %}
+                    <div class="form-group">
+                        <label for="{{item.id_for_label}}">{{item.label}}</label>
+                        <input
+                            type="{{item.widget.input_type}}"
+                            class="form-control"
+                            {% if item.field.required %}required{% endif %}
+                            name="{{item.name}}"
+                            id="{{item.id_for_label}}">{{item}}
+                    </div>        
+                {% endcomment %}
+
+
+                <br>
+            {% endfor %}    
+            <input type="submit" class='btn btn-primary' value="登録">
+
+            <label for="id_title">TTL</label>
+            <label for="id_memo">MEMO</label>
+        </form>
+    </div>
+
+</body>

@@ -1,0 +1,64 @@
+{% extends 'classApp\base.html' %}
+{% load django_bootstrap5 %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block main %}
+
+<form method="POST">
+    {% csrf_token %}
+    {% comment %}
+    {% for fld in form %}
+    <div class="form-check"></div> {{ fld.label }} )))
+    ((( {{ fld }} )))
+    <br>
+    {% endfor %}
+
+    {{form.sex}}
+    {% endcomment %}
+
+
+    <table class ="table">
+        <tr>
+            <td>{{form.name.label}}</td>
+            <td>{{form.name}}</td>
+        </tr>
+
+        <tr>
+            <td>{{form.sex.label}}</td>
+            <td>
+                {% for radiobutton in form.sex %}
+                {{ radiobutton }}
+                {% endfor %}
+            </td>
+        </tr>
+
+        <tr>
+            <td>{{form.prefecture.label}}</td>
+            <td>{{form.prefecture}}</td>
+        </tr>
+
+
+        <tr>
+            <td>{{form.hobby.label}}</td>
+            <td>
+                {% for radiobutton in form.hobby %}
+                {{ radiobutton }}
+                {% endfor %}
+            </td>
+        </tr>
+
+        <tr>
+            <td>{{form.food.label}}</td>
+            <td>{{form.food}}</td>
+        </tr>
+
+
+    </table>
+
+    {% bootstrap_button button_type="submit" content="Register" size="lg" %}
+</form>
+
+{% endblock %}

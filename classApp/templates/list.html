@@ -1,0 +1,23 @@
+<html lang="ja">
+
+<head>
+    <meta charset =" UTF-8" />
+    <title></title > 
+</head >
+
+<body>
+    memo_list_data
+    <p>
+        <a href="{% url 'create_url' %}">新規作成</a>
+    </p>
+    
+
+    {% for item in object_list %}
+        {{ item.title }}
+        <a href="{% url 'detail_url' item.pk %}">詳細</a>
+        <a href="{% url 'delete_url' item.pk %}">削除</a>
+        <a href="{% url 'update_url' item.pk %}">編集</a>
+        <br>
+    {% endfor %}
+</body>
+</html>

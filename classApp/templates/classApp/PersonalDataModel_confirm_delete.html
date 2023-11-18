@@ -1,0 +1,14 @@
+{% extends 'classApp\base.html' %}
+
+{% block title %}
+削除の確認
+{% endblock %}
+
+{% block main   %}
+<form method="post">
+    {% csrf_token %}
+    <p>削除OKですか？</p>
+    {% include 'classApp\detail.html' %}    
+    <input type="submit" value="削除">
+</form>
+{% endblock %}

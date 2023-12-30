@@ -16,8 +16,8 @@ from .forms import TestForm
 
 
 class MemoList( ListView ):
-    template_name = 'list.html'
     model = MemoModel 
+    template_name = 'list.html'
     # context_object_name = "memo_list_data"
 
 class MemoDetail( DetailView ): 
@@ -42,6 +42,8 @@ class MemoCreate(CreateView):
 
     #テンプレートファイル連携
     template_name = "form.html"
+    context_object_name = "create_obj"
+
     success_url = reverse_lazy('list_url')
 
     def get_form_kwargs(self):
